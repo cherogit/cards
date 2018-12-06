@@ -1,0 +1,8 @@
+@import 'global/variables.css';
+@import 'global/typography.css';
+@import 'global/global.css';
+@import 'global/btns.css';
+
+@import 'blocks/card.css';
+
+@import 'global/animation.css';

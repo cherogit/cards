@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'Quicksand-bold';
+	src: resolve('Quicksand-Bold.woff2') format('woff2'), resolve('Quicksand-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Quicksand-regular';
+	src: resolve('Quicksand-Regular.woff2') format('woff2'), resolve('Quicksand-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
