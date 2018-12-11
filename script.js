@@ -1,8 +1,10 @@
 "use strict";
-const $main = document.querySelector('.main');
-const $catalog = document.createElement('div');
-$catalog.classList.add('catalog', 'container');
-$main.appendChild($catalog);
+const $catalog = document.querySelector('.catalog');
+const $catalogList = document.createElement('div');
+$catalogList.classList.add('catalog__list');
+$catalog.appendChild($catalogList);
+const $controls = document.querySelector('.navigate__controls');
+const ;
 const cards = [
     {
         size: ['sm'],
@@ -31,7 +33,7 @@ class Card {
         this.$card = document.createElement('div');
         this.$card.classList.add('card');
         this.$card.innerHTML = this.model(card);
-        $catalog.appendChild(this.$card);
+        $catalogList.appendChild(this.$card);
     }
     model({ size, color, img, name, price }) {
         return `

@@ -1,10 +1,13 @@
-const $main: HTMLElement = document.querySelector('.main')
+const $catalog: HTMLElement = document.querySelector('.catalog')
 
-const $catalog: HTMLElement = document.createElement('div')
+const $catalogList: HTMLElement = document.createElement('div')
 
-$catalog.classList.add('catalog', 'container')
+$catalogList.classList.add('catalog__list')
 
-$main.appendChild($catalog)
+$catalog.appendChild($catalogList)
+
+const $controls = document.querySelector('.navigate__controls')
+const 
 
 const cards: ICard[] = [
     {
@@ -48,7 +51,7 @@ class Card {
 
         this.$card.innerHTML = this.model(card)
 
-        $catalog.appendChild(this.$card)
+        $catalogList.appendChild(this.$card)
 
     }
 
