@@ -1,0 +1,33 @@
+{
+  "name": "cards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "@types/webpack": "^4.4.21",
+    "css-loader": "^2.0.0",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "ts-loader": "^5.3.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "ts-node build.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherogit/cards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherogit/cards/issues"
+  },
+  "homepage": "https://github.com/cherogit/cards#readme"
+}
