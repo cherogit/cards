@@ -3,8 +3,30 @@ const $catalog = document.querySelector('.catalog');
 const $catalogList = document.createElement('div');
 $catalogList.classList.add('catalog__list');
 $catalog.appendChild($catalogList);
-const $controls = document.querySelector('.navigate__controls');
-const ;
+const $counter = document.querySelector('.navigate__counter span');
+const counterLength = 5;
+const moveForward = (i) => {
+    if (i < counterLength) {
+        i++;
+        $counter.innerHTML = `${i}`;
+    }
+    else {
+        $counter.innerHTML = `1`;
+    }
+};
+const moveBack = (i) => {
+    if (i > 1) {
+        i--;
+        $counter.innerHTML = `${i}`;
+    }
+    else {
+        $counter.innerHTML = `${counterLength}`;
+    }
+};
+const $arrowNext = document.querySelector('.navigate__next');
+const $arrowPrev = document.querySelector('.navigate__prev');
+$arrowNext.addEventListener('click', () => { moveForward($counter.innerHTML); });
+$arrowPrev.addEventListener('click', () => { moveBack($counter.innerHTML); });
 const cards = [
     {
         size: ['sm'],

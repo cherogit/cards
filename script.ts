@@ -6,8 +6,34 @@ $catalogList.classList.add('catalog__list')
 
 $catalog.appendChild($catalogList)
 
-const $controls = document.querySelector('.navigate__controls')
-const 
+const $counter: HTMLElement = document.querySelector('.navigate__counter span')
+
+const counterLength = 5
+
+const moveForward = (i) => {
+
+    if (i < counterLength) {
+        i++
+        $counter.innerHTML = `${i}`
+    } else {
+        $counter.innerHTML = `1`
+    }
+}
+
+const moveBack = (i) => {
+    if (i > 1) {
+        i--
+        $counter.innerHTML = `${i}`
+    } else {
+        $counter.innerHTML = `${counterLength}`
+    }
+}
+
+const $arrowNext: HTMLElement = document.querySelector('.navigate__next')
+const $arrowPrev: HTMLElement = document.querySelector('.navigate__prev')
+
+$arrowNext.addEventListener('click', () => { moveForward($counter.innerHTML) })
+$arrowPrev.addEventListener('click', () => { moveBack($counter.innerHTML) })
 
 const cards: ICard[] = [
     {
@@ -34,11 +60,11 @@ const cards: ICard[] = [
 ]
 
 interface ICard {
-    price: number
+    size: string[]
     color: string[]
     img: string
     name: string
-    size: string[]
+    price: number
 }
 
 class Card {
