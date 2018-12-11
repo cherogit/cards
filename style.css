@@ -187,3 +187,59 @@ ul, ol {
 .color:not(:last-child) {
 	margin-right: 5px;
 }
+
+.filter {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.checkbox {
+	position: relative;
+	cursor: pointer;
+}
+
+.checkbox__text {
+	position: relative;
+	padding-left: 45px;
+	font: 18px/30px 'Quicksand-bold', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+	color: #333333;
+}
+
+.checkbox__text::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	display: block;
+	width: 21px;
+	height: 21px;
+	border: 2px solid #cccccc;
+	border-radius: 3px;
+}
+
+.checkbox__text::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 4px;
+	transform: translateY(-50%);
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url('static/img/checkmark.png') center/contain no-repeat;
+	opacity: 0;
+	visibility: hidden;
+	transition: 300ms;
+}
+
+.checkbox__field {
+	position: absolute;
+	opacity: 0;
+}
+
+.checkbox input[type='checkbox']:checked + .checkbox__text::after {
+	opacity: 1;
+	visibility: visible;
+}
