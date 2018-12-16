@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Заголовок страницы</title>
+	</head>
+	<body>
+		<main class="main">
+			<div class="filter">
+				<div class="filter__wrapper container">
+					<label class="filter__field checkbox">
+						<input type="checkbox" class="checkbox__field" checked />
+						<span class="checkbox__text">men</span>
+					</label>
+					<label class="filter__field checkbox">
+						<input type="checkbox" class="checkbox__field" checked />
+						<span class="checkbox__text">women</span>
+					</label>
+					<label class="filter__field checkbox">
+						<input type="checkbox" class="checkbox__field" />
+						<span class="checkbox__text">children</span>
+					</label>
+				</div>
+			</div>
+			<div class="catalog container">
+				<div class="catalog__category">
+					<span class="catalog__category-name">Men</span>
+				</div>
+				<div class="navigate">
+					<!-- <div class="navigate__counter"><span>1</span> / 5</div> -->
+					<div class="counter"></div>
+					<div class="navigate__controls">
+						<button class="navigate__prev"><</button>
+						<button class="navigate__next">></button>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script src="./bundle.js"></script>
+	</body>
+</html>
