@@ -1,4 +1,5 @@
 import {ICard, Card, cards} from './card'
+import './counter'
 import './style.styl'
 
 
@@ -11,6 +12,7 @@ $catalogList.classList.add('catalog__list')
 if (!$catalog) throw Error('Элемент католога не найден')
 
 $catalog.appendChild($catalogList)
+
 
 // new Counter(document.querySelector('.counter'))
 
