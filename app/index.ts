@@ -1,7 +1,7 @@
 import { Card, cards } from './card'
 import { Counter } from './counter'
 import './style.styl'
-import { $ } from './lib';
+import { $ } from './lib'
 
 const $navigate = $('.navigate') as HTMLElement
 
