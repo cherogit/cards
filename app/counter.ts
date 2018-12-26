@@ -1,55 +1,78 @@
-class Counter {
+export class Counter {
 
-    public $counter: HTMLElement | null = document.querySelector('.counter')
+    public $element = document.createElement('div')
 
-    constructor($root: HTMLElement) {
+    public className: string = 'counter'
 
-        // this.$card.classList.add('card')
+    public $controls = document.createElement('div')
 
-        // this.$card.innerHTML = this.model(card)
+    public $counter = document.createElement('div')
+
+    public $prev = document.createElement('button')
+
+    public $next = document.createElement('button')
+
+    public current: number = 1
+
+    public max: number = 5
+
+    constructor(public $root: HTMLElement) {
+
+        this.$element.classList.add(this.className)
+
+        this.$element.appendChild(this.$counter)
+        this.$counter.classList.add('navigate__counter')
+        
+        this.$element.appendChild(this.$controls)
+        this.$controls.classList.add('navigate__controls')
+        
+        this.$controls.appendChild(this.$prev)
+        this.$prev.classList.add('navigate__prev')
+        this.$prev.innerText = '<'
+        this.$prev.addEventListener('click', this.prev.bind(this))
+        
+        this.$controls.appendChild(this.$next)
+        this.$next.classList.add('navigate__next')
+        this.$next.innerText = '>'
+        this.$next.addEventListener('click', this.next.bind(this))
+
+        this.$root.appendChild(this.$element)
+
+        this.render_counter()
 
     }
-}
 
+    public render_counter() {
 
-const $counter: HTMLElement | null = document.querySelector('.counter')
-if (!$counter) throw Error('Элемент счетчик не найден')
+        this.$counter.innerHTML = `${this.current} / ${this.max}`
 
-const counterLength = 5
-
-$counter.innerHTML = `<span>1</span> / ${counterLength}`
-
-const $counterValue: HTMLElement | null = $counter.querySelector('span')
-if (!$counterValue) throw Error('Элемент счетчик не найден')
-
-const $parentCounter: Element | null = $counter.closest('.catalog')
-if (!$parentCounter) throw Error('Элемент не найден')
-
-const moveForward = (i: number) => {
-    console.log(i)
-    if (i < counterLength) {
-        i++
-        $counter.innerHTML = `<span>${i}</span> / ${counterLength}`
-    } else {
-        $counter.innerHTML = `<span>1</span> / ${counterLength}`
     }
-}
 
-const moveBack = (i: number) => {
-    console.log(i)
-    if (i > 1) {
-        i--
-        $counter.innerHTML = `<span>${i}</span> / ${counterLength}`
-    } else {
-        $counter.innerHTML = `<span>${counterLength}</span> / ${counterLength}`
+    public next() {
+
+        if (this.current < this.max) this.current++
+
+        else this.current = 1
+
+        this.render_counter()
+
     }
+
+    public prev() {
+
+        if (this.current > 1) this.current--
+
+        else this.current = this.max
+
+        this.render_counter()
+
+    }
+
 }
 
-const $arrowNext: HTMLElement | null = document.querySelector('.navigate__next')
-const $arrowPrev: HTMLElement | null = document.querySelector('.navigate__prev')
+// <!-- <div class="navigate__counter"><span>1</span> / 5</div> -->
 
-if (!$arrowNext) throw Error('Элемент счетчик не найден')
-if (!$arrowPrev) throw Error('Элемент счетчик не найден')
-
-$arrowNext.addEventListener('click', () => moveForward(+$counterValue.innerHTML))
-$arrowPrev.addEventListener('click', () => moveBack(+$counterValue.innerHTML))
+// <div class="navigate__controls">
+//     <button class="navigate__prev"><</button>
+//     <button class="navigate__next">></button>
+// </div>
