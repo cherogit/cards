@@ -4,7 +4,9 @@
   "description": "",
   "main": "script.js",
   "dependencies": {
+    "@types/browser-sync": "^0.0.42",
     "@types/webpack": "^4.4.21",
+    "browser-sync": "^2.26.3",
     "css-loader": "^2.0.0",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
