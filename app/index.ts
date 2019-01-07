@@ -20,13 +20,16 @@ $catalog.appendChild($catalogList)
 
 const counter = new Counter($navigate)
 
-cards.forEach((card) => new Card(card, $catalogList))
-
-
 const xhr = new XMLHttpRequest
 
 xhr.open('GET', '/catalog-list.json', false)
 
 xhr.send()
 
-console.log('XHR RESPONSE', xhr.responseText)
+const data = JSON.parse(xhr.responseText)
+
+data.cardList.forEach((item: any) => {
+    cards.push(item)
+})
+
+cards.forEach((card) => new Card(card, $catalogList))

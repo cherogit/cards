@@ -1,26 +1,4 @@
-export const cards: ICard[] = [
-    {
-        size: ['sm'],
-        color: ['#165eb9'],
-        img: './img/t-short.png',
-        name: 'T-shirt',
-        price: 5.00
-    },
-    {
-        size: ['sm', 'lg'],
-        color: ['orange'],
-        img: './img/img2.png',
-        name: 'Pants FORCLAZ',
-        price: 30.00
-    },
-    {
-        size: ['xl', 'xll'],
-        color: ['black'],
-        img: './img/img3.png',
-        name: 'backpack',
-        price: 60.20
-    }
-]
+export const cards: ICard[] = []
 
 export interface ICard {
     size: string[]
