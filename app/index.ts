@@ -18,8 +18,6 @@ if (!$catalog) throw Error('Элемент каталога не найден')
 
 $catalog.appendChild($catalogList)
 
-const counter = new Counter($navigate)
-
 const xhr = new XMLHttpRequest
 
 xhr.open('GET', '/catalog-list.json', false)
@@ -28,8 +26,10 @@ xhr.send()
 
 const data = JSON.parse(xhr.responseText)
 
-data.cardList.forEach((item: any) => {
-    cards.push(item)
+data.cardList.forEach((card: any) => {
+    cards.push(card)
 })
+
+const counter = new Counter($navigate, cards.length)
 
 cards.forEach((card) => new Card(card, $catalogList))
