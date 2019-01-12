@@ -10,11 +10,11 @@ export class Counter {
 
     public current: number = 1
 
-    // public max: number = 4
+    public max: number
 
-    constructor(public $root: HTMLElement, public max: number) {
+    constructor(public $root: HTMLElement, public cards: any) {
 
-        this.max = Math.ceil(this.max / 3)
+        this.max = Math.ceil(this.cards.length / 3)
 
         this.$counter.classList.add('navigate__counter')
         $root.appendChild(this.$counter)
@@ -49,12 +49,3 @@ export class Counter {
     }
 
 }
-
-
-// <!-- <div class="navigate">
-// <div class="navigate__counter"><span>1</span> / 5</div>
-// <div class="navigate__controls">
-//     <button class="navigate__prev"><</button>
-//     <button class="navigate__next">></button>
-// </div>
-// </div> -->

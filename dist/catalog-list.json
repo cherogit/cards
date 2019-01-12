@@ -5,35 +5,35 @@
 			"color": ["#165eb9"],
 			"img": "./img/t-short.png",
 			"name": "T-shirt",
-			"price": 5.00
+			"price": 10.00
 		},
 		{
 			"size": ["sm", "lg"],
 			"color": ["#152cb7"],
 			"img": "./img/img2.png",
 			"name": "Pants FORCLAZ",
-			"price": 30.00
+			"price": 20.00
 		},
 		{
 			"size": ["xs", "xxl"],
 			"color": ["#c3c3c3"],
 			"img": "./img/img3.png",
 			"name": "backpack",
-			"price": 60.20
+			"price": 30.20
 		},
 		{
 			"size": ["sm"],
 			"color": ["#165eb9"],
 			"img": "./img/t-short.png",
 			"name": "T-shirt",
-			"price": 5.00
+			"price": 40.00
 		},
 		{
 			"size": ["sm", "lg"],
 			"color": ["#152cb7"],
 			"img": "./img/img2.png",
 			"name": "Pants FORCLAZ",
-			"price": 30.00
+			"price": 50.00
 		},
 		{
 			"size": ["xs", "xxl"],
@@ -47,7 +47,7 @@
 			"color": ["#c3c3c3"],
 			"img": "./img/img3.png",
 			"name": "backpack",
-			"price": 60.20
+			"price": 70.20
 		}
 	]
 }

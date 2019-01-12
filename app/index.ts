@@ -3,7 +3,6 @@ import { Counter } from './counter'
 import './style.styl'
 import { $ } from './lib'
 
-
 const $navigate = $('.navigate') as HTMLElement
 
 if (!$navigate) throw Error('Элемент навигации не найден')	
@@ -30,6 +29,12 @@ data.cardList.forEach((card: any) => {
     cards.push(card)
 })
 
-const counter = new Counter($navigate, cards.length)
+const currentListFunc = (list: any, from: number, to: number) => {
+    return list.slice(from, to)
+}
 
-cards.forEach((card) => new Card(card, $catalogList))
+const current_list = currentListFunc(cards, 0, 3)
+
+const counter = new Counter($navigate, cards)
+
+current_list.forEach((card: any) => new Card(card, $catalogList))
