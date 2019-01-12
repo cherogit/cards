@@ -12,6 +12,8 @@ export class Counter {
 
     public max: number
 
+    public onChange?: OnChangeFunction
+
     constructor(public $root: HTMLElement, public cards: any) {
 
         this.max = Math.ceil(this.cards.length / 3)
@@ -38,14 +40,22 @@ export class Counter {
 
     public renderCounter = () => this.$counter.innerHTML = `${this.current} / ${this.max}`
 
-    public prev = () => {
+    public prev() {
         (this.current <= 1) ? this.current = this.max : this.current--
         this.renderCounter()
+        if (this.onChange) this.onChange(this.current)
     }
         
-    public next = () => {
+    public next() {
         (this.current < this.max) ? this.current++ : this.current = 1
         this.renderCounter()
+        if (this.onChange) this.onChange(this.current)
     }
+
+}
+
+interface OnChangeFunction {
+
+    (current: number): void
 
 }

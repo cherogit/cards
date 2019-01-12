@@ -17,24 +17,26 @@ if (!$catalog) throw Error('Элемент каталога не найден')
 
 $catalog.appendChild($catalogList)
 
-const xhr = new XMLHttpRequest
+const cards_request = new XMLHttpRequest
 
-xhr.open('GET', '/catalog-list.json', false)
+cards_request.open('GET', '/catalog-list.json', false)
 
-xhr.send()
+cards_request.send()
 
-const data = JSON.parse(xhr.responseText)
+const data = JSON.parse(cards_request.responseText)
 
-data.cardList.forEach((card: any) => {
-    cards.push(card)
-})
+data.cardList.forEach((card: ICard) => cards.push(card))
 
-const currentListFunc = (list: any, from: number, to: number) => {
-    return list.slice(from, to)
-}
+let current = 0, step = 3
 
-const current_list = currentListFunc(cards, 0, 3)
+const currentListFunc = (list: any[], from: number, to: number) => list.slice(from, to)
+
+let current_list = currentListFunc(cards, current, current + step)
 
 const counter = new Counter($navigate, cards)
 
-current_list.forEach((card: any) => new Card(card, $catalogList))
+counter.onChange = (current) => {}
+
+current_list.forEach((card: ICard) => new Card(card, $catalogList))
+
+
