@@ -18,6 +18,8 @@ export class Card {
 
         this.$card.innerHTML = this.model(card)
 
+        // $root.innerHTML = ''
+
         $root.appendChild(this.$card)
 
     }

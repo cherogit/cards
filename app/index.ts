@@ -1,4 +1,4 @@
-import {ICard, Card, cards} from './card'
+import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
 import './style.styl'
 import { $ } from './lib'
@@ -9,11 +9,11 @@ if (!$navigate) throw Error('Элемент навигации не найден
 
 const $catalog: HTMLElement | null = document.querySelector('.catalog')
 
+if (!$catalog) throw Error('Элемент каталога не найден')
+
 const $catalogList: HTMLElement = document.createElement('div')
 
 $catalogList.classList.add('catalog__list')
-
-if (!$catalog) throw Error('Элемент каталога не найден')
 
 $catalog.appendChild($catalogList)
 
@@ -33,10 +33,26 @@ const currentListFunc = (list: any[], from: number, to: number) => list.slice(fr
 
 let current_list = currentListFunc(cards, current, current + step)
 
-const counter = new Counter($navigate, cards)
-
-counter.onChange = (current) => {}
-
 current_list.forEach((card: ICard) => new Card(card, $catalogList))
 
+const counter = new Counter($navigate, cards)
+
+counter.onChange = (current) => {
+
+    current = current - 1
+
+    $catalogList.innerHTML = ''
+
+    // console.log('Вывод пары', current * 3, current * 3 + step)
+
+    current_list = currentListFunc(cards, current * 3, current * 3 + step)
+    
+    current_list.forEach((card: ICard) => new Card(card, $catalogList))
+}
+
+
+// 0 * 3 = 0       0 * 3 + 3 = 3
+// 1 * 3 = 3       1 * 3 + 3 = 6
+// 2 * 3 = 6       2 * 3 + 3 = 9
+// 3 * 3 = 9       3 * 3 + 3 = 12
 
