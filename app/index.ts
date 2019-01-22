@@ -2,6 +2,7 @@ import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
 import './style.styl'
 import { $ } from './lib'
+import './filter'
 
 const $navigate = $('.navigate') as HTMLElement
 
@@ -10,6 +11,8 @@ if (!$navigate) throw Error('Элемент навигации не найден
 const $catalog: HTMLElement | null = document.querySelector('.catalog')
 
 if (!$catalog) throw Error('Элемент каталога не найден')
+
+// console.log($catalog.dataset.type)
 
 const $catalogList: HTMLElement = document.createElement('div')
 
@@ -27,6 +30,34 @@ const data = JSON.parse(cards_request.responseText)
 
 data.cardList.forEach((card: ICard) => cards.push(card))
 
+
+// const options = [
+//     [ 'sm', ['xs', 'lg'] ],
+//     [ '#165eb9', 'red' ],
+//     [ './img/img1.png', './img/img1.png' ],
+//     [ 'name1', 'name2' ],
+//     [ 666, 777 ]
+// ]
+
+const generateItems = (options: (string[] | number[])[]) => {
+
+    options.forEach( (item, index) => {
+
+    })
+}
+
+// const obj = {
+//     type: 1 - 3,
+//     size: [],
+//     color: [],
+//     img: '',
+//     name: '',
+//     price: ''
+// }
+
+
+
+
 let current = 0, step = 3
 
 const currentListFunc = (list: any[], from: number, to: number) => list.slice(from, to)
@@ -43,16 +74,8 @@ counter.onChange = (current) => {
 
     $catalogList.innerHTML = ''
 
-    // console.log('Вывод пары', current * 3, current * 3 + step)
-
     current_list = currentListFunc(cards, current * 3, current * 3 + step)
     
     current_list.forEach((card: ICard) => new Card(card, $catalogList))
 }
-
-
-// 0 * 3 = 0       0 * 3 + 3 = 3
-// 1 * 3 = 3       1 * 3 + 3 = 6
-// 2 * 3 = 6       2 * 3 + 3 = 9
-// 3 * 3 = 9       3 * 3 + 3 = 12
 

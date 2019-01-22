@@ -14,7 +14,7 @@ export class Counter {
 
     public onChange?: OnChangeFunction
 
-    constructor(public $root: HTMLElement, public cards: any) {
+    constructor(public $root: HTMLElement, public cards: any[]) {
 
         this.max = Math.ceil(this.cards.length / 3)
 
