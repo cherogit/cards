@@ -3,6 +3,7 @@ import { Counter } from './counter'
 import './style.styl'
 import { $ } from './lib'
 import './filter'
+import './generate'
 
 const $navigate = $('.navigate') as HTMLElement
 
@@ -12,48 +13,21 @@ const $catalog: HTMLElement | null = document.querySelector('.catalog')
 
 if (!$catalog) throw Error('Элемент каталога не найден')
 
-// console.log($catalog.dataset.type)
-
 const $catalogList: HTMLElement = document.createElement('div')
 
 $catalogList.classList.add('catalog__list')
 
 $catalog.appendChild($catalogList)
 
-const cards_request = new XMLHttpRequest
+// const cards_request = new XMLHttpRequest
 
-cards_request.open('GET', '/catalog-list.json', false)
+// cards_request.open('GET', '/catalog-list.json', false)
 
-cards_request.send()
+// cards_request.send()
 
-const data = JSON.parse(cards_request.responseText)
+// const data = JSON.parse(cards_request.responseText)
 
-data.cardList.forEach((card: ICard) => cards.push(card))
-
-
-// const options = [
-//     [ 'sm', ['xs', 'lg'] ],
-//     [ '#165eb9', 'red' ],
-//     [ './img/img1.png', './img/img1.png' ],
-//     [ 'name1', 'name2' ],
-//     [ 666, 777 ]
-// ]
-
-const generateItems = (options: (string[] | number[])[]) => {
-
-    options.forEach( (item, index) => {
-
-    })
-}
-
-// const obj = {
-//     type: 1 - 3,
-//     size: [],
-//     color: [],
-//     img: '',
-//     name: '',
-//     price: ''
-// }
+// data.cardList.forEach((card: ICard) => cards.push(card))
 
 
 
@@ -78,4 +52,3 @@ counter.onChange = (current) => {
     
     current_list.forEach((card: ICard) => new Card(card, $catalogList))
 }
-

@@ -1,6 +1,7 @@
 export const cards: ICard[] = []
 
 export interface ICard {
+    type?: string[]
     size: string[] // ['xs', 'xl', 'sm', 'ld']
     color: string[]
     img: string
@@ -17,8 +18,6 @@ export class Card {
         this.$card.classList.add('card')
 
         this.$card.innerHTML = this.model(card)
-
-        // $root.innerHTML = ''
 
         $root.appendChild(this.$card)
 
