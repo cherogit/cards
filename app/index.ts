@@ -1,9 +1,9 @@
+import { $ } from './lib'
 import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
-import './style.styl'
-import { $ } from './lib'
+import { genItems } from './generate'
 import './filter'
-import './generate'
+import './style.styl'
 
 const $navigate = $('.navigate') as HTMLElement
 
@@ -29,7 +29,9 @@ $catalog.appendChild($catalogList)
 
 // data.cardList.forEach((card: ICard) => cards.push(card))
 
+const data = genItems(100)
 
+data.forEach((card: ICard) => cards.push(card))
 
 
 let current = 0, step = 3
@@ -39,6 +41,8 @@ const currentListFunc = (list: any[], from: number, to: number) => list.slice(fr
 let current_list = currentListFunc(cards, current, current + step)
 
 current_list.forEach((card: ICard) => new Card(card, $catalogList))
+
+
 
 const counter = new Counter($navigate, cards)
 

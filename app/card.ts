@@ -33,7 +33,7 @@ export class Card {
                 </div>
             </div>
             <div class="card__pict"> 
-                <img src="${img}" alt="" />
+                <img src="./img/${img}" alt="" />
             </div>
             <div class="card__info"> 
                 <div class="card__name">${name}</div>
