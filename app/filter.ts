@@ -1,8 +1,22 @@
-const test: HTMLElement | null = document.querySelector('.catalog')
+const $navigate: HTMLElement = document.createElement('div')
 
-if (!test) throw Error('Элемент каталога не найден')
+$navigate.classList.add('navigate')
 
-const testData = test.dataset.type
+const $catalog: HTMLElement = document.createElement('div')
+
+$catalog.classList.add('catalog.container')
+
+const $catalogList: HTMLElement = document.createElement('div')
+
+$catalogList.classList.add('catalog__list')
+
+const $catalogCategory: HTMLElement = document.createElement('div')
+
+$catalogCategory.classList.add('catalog__category')
+
+$catalog.appendChild($catalogCategory)
+$catalog.appendChild($navigate)
+$catalog.appendChild($catalogList)
 
 
 const checkboxes = document.querySelectorAll('.checkbox__field');
@@ -10,9 +24,8 @@ const checkboxes = document.querySelectorAll('.checkbox__field');
 [].forEach.call(checkboxes, (item: HTMLInputElement) => {
 
     item.addEventListener('change', () => {
-        if (item.checked === true && testData === item.dataset.type) {
+        if (item.checked === true) {
             console.log(item.dataset.type)
-            test.remove()
         }
     })
 })

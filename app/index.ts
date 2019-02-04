@@ -1,23 +1,23 @@
 import { $ } from './lib'
+import './filter'
 import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
 import { genItems } from './generate'
-import './filter'
 import './style.styl'
 
-const $navigate = $('.navigate') as HTMLElement
+// const $navigate = $('.navigate') as HTMLElement
 
-if (!$navigate) throw Error('Элемент навигации не найден')	
+// if (!$navigate) throw Error('Элемент навигации не найден')	
 
-const $catalog: HTMLElement | null = document.querySelector('.catalog')
+// const $catalog: HTMLElement | null = document.querySelector('.catalog')
 
-if (!$catalog) throw Error('Элемент каталога не найден')
+// if (!$catalog) throw Error('Элемент каталога не найден')
 
-const $catalogList: HTMLElement = document.createElement('div')
+// const $catalogList: HTMLElement = document.createElement('div')
 
-$catalogList.classList.add('catalog__list')
+// $catalogList.classList.add('catalog__list')
 
-$catalog.appendChild($catalogList)
+// $catalog.appendChild($catalogList)
 
 // const cards_request = new XMLHttpRequest
 
