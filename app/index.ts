@@ -1,49 +1,95 @@
 import { $ } from './lib'
-import { $catalogList, $navigate } from './filter'
 import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
 import { genItems } from './generate'
 import './style.styl'
 
-// const $navigate = $('.navigate') as HTMLElement
+let $main = document.querySelector('main')
 
-// if (!$navigate) throw Error('Элемент навигации не найден')	
-
-// const $catalog: HTMLElement | null = document.querySelector('.catalog')
-
-// if (!$catalog) throw Error('Элемент каталога не найден')
-
-// const $catalogList: HTMLElement = document.createElement('div')
-
-// $catalogList.classList.add('catalog__list')
-
-// $catalog.appendChild($catalogList)
 
 
 const data = genItems(100)
 
+
 data.forEach((card: ICard) => cards.push(card))
 
+class Slider {
 
-let current = 0, step = 3
-
-const currentListFunc = (list: any[], from: number, to: number) => list.slice(from, to)
-
-let current_list = currentListFunc(cards, current, current + step)
-
-current_list.forEach((card: ICard) => new Card(card, $catalogList))
-
-
-
-const counter = new Counter($navigate, cards)
-
-counter.onChange = (current) => {
-
-    current = current - 1
-
-    $catalogList.innerHTML = ''
-
-    current_list = currentListFunc(cards, current * 3, current * 3 + step)
+    public current = 0
     
-    current_list.forEach((card: ICard) => new Card(card, $catalogList))
+    public step = 3
+
+    public $el = document.createElement('div')
+
+    constructor(public $container: Element, public cards: ICard[]) {
+
+        this.$el.classList.add('catalog__list')
+
+        this.$container.appendChild(this.$el)
+
+        this.render()
+
+    }
+
+    public render() {
+
+        const currentListFunc = (list: any[], from: number, to: number) => list.slice(from, to)
+
+        let current_list = currentListFunc(cards, this.current, this.current + this.step)
+
+        current_list.forEach((card: ICard) => new Card(card, this.$el))
+
+    }
+
+    public get currentList() {
+
+        return this.cards.slice(this.current, this.current + this.step)
+
+    }
+
 }
+
+class CatalogList {
+
+    public $el = document.createElement('div')
+
+    public counter = new Counter(this.$el, cards)
+
+    public slider = new Slider(this.$el, cards)
+
+    constructor(public $container: Element) {
+
+        this.$el.classList.add('catalog-list')
+
+        this.$container.appendChild(this.$el)
+
+        this.counter.onChange = (current) => {
+
+            this.slider.current--
+
+            this.slider.$el.innerHTML = ''
+
+            this.slider.render()
+
+        }
+
+    }
+
+}
+
+const checkboxes = document.querySelectorAll('.checkbox__field');
+
+[].forEach.call(checkboxes, (item: HTMLInputElement) => {
+
+    item.addEventListener('change', () => {
+        if (item.checked === true) {
+            console.log('HERE', item.dataset.type)
+
+            if (!$main) throw Error('Контэинер не найден')
+
+            new CatalogList($main)
+        }
+    })
+})
+
+
