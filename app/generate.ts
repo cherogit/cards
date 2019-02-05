@@ -1,17 +1,18 @@
 import { ICard } from "./card";
 
+const types = ['men', 'women', 'children']
+
+const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
+
+const images = ['img1.png', 'img2.png', 'img3.png', 'img4.jpeg', 'img5.jpeg', 'img6.jpeg', 'img7.jpeg', 'img8.jpeg', 'img9.jpeg', 'img10.jpeg', 'img11.jpeg']
+
+
 export const genItems = function(count: number) {
 
     const cards = []
 
     while ( count > 0 ) {
-
-        const types = ['men', 'women', 'children']
-
-        const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
-
-        const images = ['img1.png', 'img2.png', 'img3.png', 'img4.jpeg', 'img5.jpeg', 'img6.jpeg', 'img7.jpeg', 'img8.jpeg', 'img9.jpeg', 'img10.jpeg', 'img11.jpeg']
-
+        
         const amountSizes = Math.floor(Math.random() * sizes.length) + 1
 
         const shuffledSizes = sizes.sort( () => 0.5 - Math.random())
@@ -29,7 +30,7 @@ export const genItems = function(count: number) {
             size: shuffledSizes.splice(0, amountSizes),
             color: [`rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`],
             img: `${images.splice(numberImage, 1)}`,
-            name: 'name',
+            name: 'name', // алфавит сделать
             price: Math.floor(Math.random() * 1000)
         }
 

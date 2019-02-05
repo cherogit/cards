@@ -1,5 +1,5 @@
 import { $ } from './lib'
-import './filter'
+import { $catalogList, $navigate } from './filter'
 import { ICard, Card, cards } from './card'
 import { Counter } from './counter'
 import { genItems } from './generate'
@@ -19,15 +19,6 @@ import './style.styl'
 
 // $catalog.appendChild($catalogList)
 
-// const cards_request = new XMLHttpRequest
-
-// cards_request.open('GET', '/catalog-list.json', false)
-
-// cards_request.send()
-
-// const data = JSON.parse(cards_request.responseText)
-
-// data.cardList.forEach((card: ICard) => cards.push(card))
 
 const data = genItems(100)
 
