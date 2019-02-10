@@ -1,5 +1,7 @@
 export class Counter {
 
+    public $container = document.createElement('div')
+
     public $counter = document.createElement('div')
 
     public $controls = document.createElement('div')
@@ -18,21 +20,25 @@ export class Counter {
 
         this.max = Math.ceil(this.cards.length / 3)
 
+        this.$container.classList.add('navigate')
+
         this.$counter.classList.add('navigate__counter')
-        $root.appendChild(this.$counter)
-
+        this.$container.appendChild(this.$counter)
+        
         this.$controls.classList.add('navigate__controls')
-        $root.appendChild(this.$controls)
-
+        this.$container.appendChild(this.$controls)
+        
         this.$prev.classList.add('navigate__prev')
         this.$prev.innerText = '<'
         this.$controls.appendChild(this.$prev)
         this.$prev.addEventListener('click', this.prev.bind(this))
-
+        
         this.$next.classList.add('navigate__next')
         this.$next.innerText = '>'
         this.$controls.appendChild(this.$next)
         this.$next.addEventListener('click', this.next.bind(this))
+        
+        $root.appendChild(this.$container)
 
         this.renderCounter()
 

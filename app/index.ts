@@ -7,11 +7,12 @@ import './style.styl'
 let $main = document.querySelector('main')
 
 
-
 const data = genItems(100)
 
-
 data.forEach((card: ICard) => cards.push(card))
+
+// console.log(data)
+
 
 class Slider {
 
@@ -49,19 +50,32 @@ class Slider {
 
 }
 
-class CatalogList {
+class Catalog {
 
     public $el = document.createElement('div')
 
+    public $category = document.createElement('div')
+
+    public $category_name = document.createElement('span')
+
     public counter = new Counter(this.$el, cards)
 
-    public slider = new Slider(this.$el, cards)
+    slider = new Slider(this.$el, cards)
 
-    constructor(public $container: Element) {
+    constructor(public $container: Element, public cateroryType: string) {
 
-        this.$el.classList.add('catalog-list')
+        this.$el.classList.add('catalog', 'container')
+
+        this.$el.setAttribute('data-type', cateroryType)
 
         this.$container.appendChild(this.$el)
+
+        this.$category.classList.add('catalog__category')
+        this.$el.prepend(this.$category)
+
+        this.$category_name.classList.add('catalog__category-name')
+        this.$category_name.innerText = cateroryType
+        this.$category.appendChild(this.$category_name)
 
         this.counter.onChange = (current) => {
 
@@ -72,9 +86,7 @@ class CatalogList {
             this.slider.render()
 
         }
-
     }
-
 }
 
 const checkboxes = document.querySelectorAll('.checkbox__field');
@@ -82,12 +94,19 @@ const checkboxes = document.querySelectorAll('.checkbox__field');
 [].forEach.call(checkboxes, (item: HTMLInputElement) => {
 
     item.addEventListener('change', () => {
+
         if (item.checked === true) {
-            console.log('HERE', item.dataset.type)
 
-            if (!$main) throw Error('Контэинер не найден')
+            if (!$main) throw Error('Контейнер не найден')
 
-            new CatalogList($main)
+            new Catalog($main, item.dataset.type as string)
+
+        } else {
+            const currentCatalog: HTMLElement | null = document.querySelector(`.catalog[data-type="${item.dataset.type}"]`)
+            
+            if (!currentCatalog) throw Error('Искомый каталог не найден.')
+
+            currentCatalog.remove()
         }
     })
 })
