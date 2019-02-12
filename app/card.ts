@@ -1,7 +1,7 @@
 export const cards: ICard[] = []
 
 export interface ICard {
-    type?: string[]
+    type?: string
     size: string[] // ['xs', 'xl', 'sm', 'ld']
     color: string[]
     img: string

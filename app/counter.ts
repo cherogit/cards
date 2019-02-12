@@ -44,11 +44,16 @@ export class Counter {
 
     }
 
-    public renderCounter = () => this.$counter.innerHTML = `${this.current} / ${this.max}`
+    public renderCounter() {
+
+        return this.$counter.innerHTML = `${this.current} / ${this.max}`
+        
+    }
 
     public prev() {
         (this.current <= 1) ? this.current = this.max : this.current--
         this.renderCounter()
+        
         if (this.onChange) this.onChange(this.current)
     }
         
